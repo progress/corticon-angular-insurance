@@ -1,0 +1,1 @@
+This is an app that shows the use of Corticon in an AngularJS healthcare app. 

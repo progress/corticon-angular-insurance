@@ -1,0 +1,10 @@
+{
+  "name": "location-viewer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.8.2",
+    "express": "4.*",
+    "jade":"1.7.*"
+  }
+}
