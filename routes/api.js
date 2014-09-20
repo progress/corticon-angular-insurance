@@ -3,45 +3,51 @@
  */
 //Rollbase setup (though https is used by both Rollbase and Mongo)
 var https = require('https');
-var password = 'YOUR ROLLBASE PASSWORD';
-var username = 'YOUR ROLLBASE USERNAME';
-var viewId = 'YOUR ROLLBASE VIEWID';
-var objectIntegrationName = 'YOUR OBJECT INTEGRATION NAME';
-var sessionId = '';
-login();
-// This logs back in periodically. Currently it logs in every hour, but the interval can be adjusted.
-var interval = setInterval(login, 360000);
-
-// Function for logging into Rollbase with credentials. It updates the sessionId token and also calls updateData to update any data. 
-function login() {
-    var loginOptions = {
-        host: 'rollbase.com',
-        port: 443,
-        // Note this is password not Password like in documentation
-        path: '/rest/api/login?&output=json&password=' + password + '&loginName=' + username
-    };
-    // do the request
-    var loginGet = https.request(loginOptions, function(res) {
-        var data = '';
-        res.on('data', function(d) {
-            data += d;
-        });
-        res.on('end', function() {
-            var obj = JSON.parse(data);
-            if (obj.status == 'ok') {
-                sessionId = obj.sessionId;
-            } else {
-                console.log(obj.message);
-            }
-        })
-    });
-    loginGet.end();
-    loginGet.on('error', function(e) {
-        console.error(e);
-    });
-}
 
 exports.getInfo = function(req, result) {
-    //Currently just logs the response
-    console.log(req.body);
+    var data = req.body;
+    var number = [];
+    for (var i = 0; i <= data.familySize; i++)
+        number.push(i);
+    var sex = (data.gender == 'male') ? 'Men' : 'Women';
+    var screen = data.pane + 1;
+    var estimate = 10;
+    result.json({
+        'number': number,
+        'sex': sex,
+        'screen': screen,
+        'estimate': estimate
+    });
+    return;
+    var link = 'YOUR LINK HERE';
+    var hostName = 'YOUR HOST NAME HERE';
+    var counter = data.count;
+    var jsonRequest = JSON.stringify({
+        "Objects": [{
+            "form": req.body
+        }]
+    });
+    var contentLength = jsonRequest.length;
+    var request = require('request');
+    var querystring = require('querystring');
+    request({
+        headers: {
+            'content-length': contentLength,
+            'content-type': 'application/json',
+            'connection': 'Keep-Alive',
+            'user-agent': 'NodeJS client',
+            'host': hostName,
+            'dsName': 'PROCESS NAME HERE'
+        },
+        url: link,
+        body: jsonRequest,
+        method: 'POST'
+    }, function(err, res, body) {
+        if (res.statusCode < 400) {
+            var obj = JSON.parse(body);
+            var formResponse = obj.Objects[0].formResponse;
+            result.write(formResponse);
+            result.end();
+        }
+    });
 }

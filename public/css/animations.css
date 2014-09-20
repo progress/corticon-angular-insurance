@@ -1,0 +1,20 @@
+.animate-show {
+  line-height:20px;
+  opacity:1;
+  padding:10px;
+  border:1px solid #19324B;
+  background:#F9FAFE;
+  border-radius: 5px;
+}
+
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition:all ease-in-out 0.5s;
+  -moz-transition:all ease-in-out 0.5s;
+  transition:all ease-in-out 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height:5px;
+  padding:10px;
+  opacity:0;
+}

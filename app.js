@@ -19,7 +19,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 var env = process.env.NODE_ENV || 'development';
-
+app.locals.pretty = true;
 /**
  * Routes
  */

@@ -1,11 +1,15 @@
 body {
-        font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+    width: 35em;
+    color:#19324B;
 }
 input:required:invalid {
   box-shadow: none;
-  background: rgba(255, 0, 0, 0.1);
+  background: #FF9999;
+  border-radius:5px;
 }
 
 input:required:valid {
-  background: rgba(0, 255, 0, 0.1);
+  background: #AAFAAA;
+  border-radius:5px;
 }

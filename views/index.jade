@@ -5,9 +5,10 @@ html(ng-app="myApp")
     base(href='/')
     title Health Insurance
     link(rel='stylesheet', href='/css/app.css')
-  body
+    link(rel='stylesheet', href='/css/animations.css')
+  body(ng-app='myApp')
     span(ng-controller='AppCtrl')
-      div(ng-show='pane==0')
+      div(ng-show='pane==0', class="animate-show")
         h2 Basic Information
         form(name='basic')
           h4 Zip Code:    
@@ -16,11 +17,27 @@ html(ng-app="myApp")
             input(type='date', ng-model='date', placeholder="yyyy-MM-dd", required)
           h4 Number of Family Members
             input(type='text', ng-model='familySize', pattern='[0-9]{1,2}', required)
+          h4 Your Gender
+            input(type="radio", name="gender_filter", ng-value="1", ng-model='gender', required)
+            | Male
+            input(type="radio", name="gender_filter", ng-value="2", ng-model='gender')
+            | Female
           button(ng-click='next()', ng-disabled='basic.$invalid') Next
-      div(ng-show='pane==1')
+      div(ng-show='pane==1', class="animate-show")
+        h2 Magazines
+          h4 Magazines for {{sex}}
+            p {{sex}}'s Weekly
+              input(type='checkbox', ng-model='mag1')
+            p {{sex}}'s Health
+              input(type='checkbox', ng-model='mag2')
+            p {{sex}}'s Digest
+              input(type='checkbox', ng-model='mag3')
+            button(ng-click='previous()') Back
+            button(ng-click='next()') Next
+      div(ng-show='pane==2', class="animate-show")
         h2 Details on Family Members
         form(name='family', ng-model='familyInfo')
-          span(ng-repeat='i in getNumber()')
+          span(ng-repeat='i in number')
             span(ng-show='!$first')
               h3 Family Member {{i}}
             span(ng-show='$first')
@@ -31,14 +48,14 @@ html(ng-app="myApp")
               input(type='checkbox', ng-model='tobacco')
           button(ng-click='previous()') Back
           button(ng-click='next()', ng-disabled='family.$invalid') Next
-      div(ng-show='pane==2')
+      div(ng-show='pane==3', class="animate-show")
         h2 Income
         form(name='income')
           h4 Salary (approximate is ok)
             input(type='text', ng-model='salary', pattern='[0-9]{1,12}', required)
           button(ng-click='previous()') Back
           button(ng-click='next()', ng-disabled='income.$invalid') Next
-      div(ng-show='pane==3')
+      div(ng-show='pane==4', class="animate-show")
         h2 Use Frequency
         form(name='details')
           h4 Estimated number of doctor visits a year
@@ -47,7 +64,10 @@ html(ng-app="myApp")
             input(type='text', ng-model='prescriptions', pattern='[0-9]{1,2}', required)
           button(ng-click='previous()') Back
           button(ng-click='next()', ng-disabled='details.$invalid') Submit
+      div(ng-show='pane==5', class="animate-show")
+        h2 Your estimated cost is ${{estimate}} a month
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js')
+    script(src='https://code.angularjs.org/1.3.0-rc.0/angular-animate.min.js')
     script(src='js/app.js')
     script(src='js/services.js')
     script(src='js/controllers.js')
