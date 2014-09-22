@@ -11,17 +11,20 @@ controller('AppCtrl', function($scope, $http) {
         var info = $scope;
         switch ($scope.pane) {
             case 0:
+                $scope.pane ++;
+                break;
+            case 1:
                 data.zip = info.zip;
                 data.date = info.date;
                 data.familySize = info.familySize;
                 data.gender = (info.gender == 1) ? 'male' : 'female';
                 update();
                 break;
-            case 1:
+            case 2:
                 data.magazines = [info.mag1 ? 1 : 0, info.mag2 ? 1 : 0, info.mag3 ? 1 : 0];
                 update();
                 break;
-            case 2:
+            case 3:
                 info = $scope.$$childHead;
                 data.birth = [];
                 data.tobacco = 0;
@@ -33,11 +36,11 @@ controller('AppCtrl', function($scope, $http) {
                 }
                 update();
                 break;
-            case 3:
+            case 4:
                 data.salary = info.salary;
                 update();
                 break;
-            case 4:
+            case 5:
                 data.visits = info.visits;
                 data.prescriptions = info.prescriptions;
                 update();

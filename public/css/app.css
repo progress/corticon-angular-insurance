@@ -13,3 +13,7 @@ input:required:valid {
   background: #AAFAAA;
   border-radius:5px;
 }
+img {
+  width: 202px;
+  height: 46px;
+}
