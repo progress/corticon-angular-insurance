@@ -10,10 +10,29 @@ input:required:invalid {
 }
 
 input:required:valid {
+  box-shadow: none;
   background: #AAFAAA;
   border-radius:5px;
 }
-img {
-  width: 202px;
-  height: 46px;
+img{
+    box-shadow: none;
+    border-color: transparent;
+}
+a {
+    color:#19324B;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
 }

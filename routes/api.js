@@ -6,6 +6,8 @@ var https = require('https');
 
 exports.getInfo = function(req, result) {
     var data = req.body;
+    /* This is the simulated response (not using Corticon) on http://health-insurance-22573.onmodulus.net/
+    // Ideally obj.Objects[0].formResponse (line 51) would send an equivalent response to this.
     var number = [];
     for (var i = 0; i <= data.familySize; i++)
         number.push(i);
@@ -19,9 +21,10 @@ exports.getInfo = function(req, result) {
         'estimate': estimate
     });
     return;
-    var link = 'YOUR LINK HERE';
-    var hostName = 'YOUR HOST NAME HERE';
-    var counter = data.count;
+    */
+    // Using JSON requests based on http://documentation.progress.com/output/ua/Corticon/index.html#page/Corticon/Corticon.0708.html
+    var link = 'http://54.247.33.104:8850/';
+    var hostName = 'http://54.247.33.104:8850/';
     var jsonRequest = JSON.stringify({
         "Objects": [{
             "form": req.body
