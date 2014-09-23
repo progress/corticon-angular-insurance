@@ -1,7 +1,12 @@
-body {
+#main {
     font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
-    width: 35em;
+    width: 40em;
     color:#19324B;
+    padding: 10px;
+    border-style: solid;
+  border:1px solid #19324B;
+  background:#F9FAFE;
+  border-radius: 5px;
 }
 input:required:invalid {
   box-shadow: none;
