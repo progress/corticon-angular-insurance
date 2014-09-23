@@ -6,7 +6,8 @@ var https = require('https');
 
 exports.getInfo = function(req, result) {
     var data = req.body;
-    /* This is the simulated response (not using Corticon) on http://health-insurance-22573.onmodulus.net/
+    /*
+    // This is the simulated response (not using Corticon) on http://health-insurance-22573.onmodulus.net/
     // Ideally obj.Objects[0].formResponse (line 51) would send an equivalent response to this.
     var number = [];
     for (var i = 0; i <= data.familySize; i++)
