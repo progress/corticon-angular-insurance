@@ -5,13 +5,12 @@
 angular.module('myApp.controllers', []).
 controller('AppCtrl', function($scope, $http) {
     $scope.pane = 0;
-    $scope.familySize = 0
     var data = {};
     // This is called each time the screen should be advanced. It stores all current information into data.
     $scope.next = function() {
         console.log($scope.$$childTail);
         if($scope.pane == 1){
-            $scope.pane = 0;
+            $scope.familySize = 0;
             if($scope.$$childTail)
                 $scope.familySize = $scope.$$childTail.familySize;
         }
