@@ -11,6 +11,7 @@ controller('AppCtrl', function($scope, $http) {
     $scope.next = function() {
         console.log($scope.$$childTail);
         if($scope.pane == 1){
+            $scope.pane = 0;
             if($scope.$$childTail)
                 $scope.familySize = $scope.$$childTail.familySize;
         }
