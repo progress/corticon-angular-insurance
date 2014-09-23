@@ -28,7 +28,7 @@ html(ng-app="myApp")
             h4 How many dependents do you have?
               input(type='number', ng-model='familySize', ng-min='0', ng-max='12', min='0', max='12', required)
             span(ng-if='familySize >= 0')
-              h4 Your monthly contribution will be {{(familySize >= 5) ? 100 : 10 * familySize}}
+              h4 Your monthly contribution will be {{(familySize >= 5) ? 100 : 20 * familySize}}
         button(ng-click='previous()') Back
         button(ng-click='next()', ng-disabled='coverage.$invalid') Next
       div(ng-show='pane==2')
@@ -88,7 +88,7 @@ html(ng-app="myApp")
       div(ng-show='pane==4')
         h4 Plan Selected: {{plan==1 ? 'Basic': plan==2 ? 'Economic' : 'High Deductible'}}
         h4 Name: {{first}}
-        h4 Your monthly contribution will be €{{(plan==2 ?((familySize >= 5) ? 100 : 10 * familySize) : 0) + (magazine3 ? 10 : 0)}}
+        h4 Your monthly contribution will be €{{(plan==2 ?((familySize >= 5) ? 100 : 20 * familySize) : 0) + (magazine3 ? 10 : 0)}}
         h4 Age: {{age}}
         h4 Family Size: {{familySize}}
         h4 Gender: {{gender==2 ?'Male' : 'Female'}}
