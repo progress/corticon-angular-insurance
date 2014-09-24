@@ -6,9 +6,10 @@ var https = require('https');
 
 exports.getInfo = function(req, result) {
     var data = req.body;
-    // Using JSON requests based on http://documentation.progress.com/output/ua/Corticon/index.html#page/Corticon/Corticon.0708.html
+    // Using http://54.247.33.104:8850/axis/services/Corticon because http://54.247.33.104:8850/axis/axis/services/Corticon wasn't working
     var link = 'http://54.247.33.104:8850/axis/services/Corticon';
     var hostName = 'localhost:3000';
+    // Using JSON requests based on http://documentation.progress.com/output/ua/Corticon/index.html#page/Corticon/Corticon.0708.html
     var jsonRequest = JSON.stringify({
         "Objects": [{
             "form": req.body
@@ -32,6 +33,7 @@ exports.getInfo = function(req, result) {
         method: 'POST'
     }, function(err, res, body) {
         console.log(res.statusCode);
+        // Response is SOAP 
         console.log(body);
         if (res.statusCode <= 400) {
             var obj = JSON.parse(body);

@@ -31,12 +31,11 @@ controller('AppCtrl', function($scope, $http) {
                 break;
         }
         console.log(data);
+        $scope.pane++;
         update();
     };
     // This calls the backend to determine what to show next.
     var update = function() {
-        $scope.pane++;
-        return;
         data.pane = $scope.pane;
         $http.post('/api/getInfo', data).
         success(function(dat) {
