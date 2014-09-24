@@ -1,9 +1,9 @@
 #main {
-    font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
-    width: 40em;
-    color:#19324B;
-    padding: 10px;
-    border-style: solid;
+  font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+  width: 40em;
+  color:#19324B;
+  padding: 10px;
+  border-style: solid;
   border:1px solid #19324B;
   background:#F9FAFE;
   border-radius: 5px;
@@ -13,7 +13,9 @@ input:required:invalid {
   background: #FF9999;
   border-radius:5px;
 }
-
+span{
+  color:#00A86B;
+}
 input:required:valid {
   box-shadow: none;
   background: #AAFAAA;
@@ -22,6 +24,12 @@ input:required:valid {
 img{
     box-shadow: none;
     border-color: transparent;
+}
+#men{
+      color:#19324B;
+}
+#women{
+      color:#19324B;
 }
 a {
     color:#19324B;
