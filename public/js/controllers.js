@@ -17,6 +17,7 @@ controller('AppCtrl', function($scope, $http) {
                 break;
             case 2:
                 $scope.viewGender();
+                update();
                 break;
             case 3:
                 data.magazines = [0, 0, 0, 0];
@@ -32,7 +33,6 @@ controller('AppCtrl', function($scope, $http) {
         }
         console.log(data);
         $scope.pane++;
-        update();
     };
     // This calls the backend to determine what to show next.
     var update = function() {
@@ -40,7 +40,9 @@ controller('AppCtrl', function($scope, $http) {
         $http.post('/api/getInfo', data).
         success(function(dat) {
             console.log(dat);
-            if (dat) {}
+            if (dat) {
+                $scope.pane++;
+            }
         });
     }
 
