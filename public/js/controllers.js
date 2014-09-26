@@ -31,16 +31,22 @@ controller('AppCtrl', function($scope, $http) {
                     data.magazines[3] = 1;
                 break;
         }
+        // When it's on the 2nd pane, the update method is called, which takes care of advancing forward once it has a Corticon response
+        if($scope.pane != 2){
+            $scope.pane++;
+        }
         console.log(data);
-        $scope.pane++;
     };
-    // This calls the backend to determine what to show next.
+    // This calls the backend to determine what to show next. 
+    // Currently, this is only called when teh net page from gender is clicked. You would probably need to use scope.$watch to call on any change of input.
     var update = function() {
         data.pane = $scope.pane;
         $http.post('/api/getInfo', data).
         success(function(dat) {
             console.log(dat);
             if (dat) {
+                $scope.genderq = dat.genderq;
+                console.log($scope.genderq);
                 $scope.pane++;
             }
         });
@@ -85,7 +91,7 @@ controller('AppCtrl', function($scope, $http) {
             data.age = $scope.age;
             var scope = $scope.$$childTail;
             if ($scope.gender == 1) {
-                data.gender = 'female';
+                data.gender = 'Female';
                 if (scope.pregnant == 2) {
                     data.pregnant = 'NO';
                 } else {
@@ -96,7 +102,7 @@ controller('AppCtrl', function($scope, $http) {
                     }
                 }
             } else if ($scope.gender == 2) {
-                data.gender = 'male';
+                data.gender = 'Male';
                 if (scope.prostate == 2) {
                     data.prostate = 'NO';
                 } else {

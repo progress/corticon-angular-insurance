@@ -73,10 +73,10 @@ html(ng-app="myApp")
           h4 Plan Selected: {{viewPlan()}}
           h4 Gender: {{viewGender()}}
           h4 Select magazines that interest you: <br />
-            span(ng-show='gender==2', id='men')
+            span(ng-show='genderq=="male"', id='men')
               input(type="checkbox", ng-model='magazine1')
               | Men’s Health Newsletter – covering men’s health issues (free) <br \>
-            span(ng-show='gender==1', id='women')
+            span(ng-show='genderq=="female"', id='women')
               input(type="checkbox", ng-model='magazine2')
               | Women’s Health Newsletter – covering women’s health issues (free) <br \>              
             input(type="checkbox", ng-model='magazine3')

@@ -32,7 +32,7 @@ app.post('/api/getInfo', jsonParser, api.getInfo);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', function(req, res) {
-    res.render('index');
+    res.render('main');
 });
 
 
