@@ -1,5 +1,5 @@
 ### Project Description
-This is an app that shows the use of Corticon in an AngularJS healthcare app. Currently Corticon is only called for the gender question. 
+This is an app that shows the use of Corticon in an AngularJS healthcare app. Currently Corticon is only called for the gender question. You can view the app at http://health-insurance-22573.onmodulus.net/
 
 ### Directory Descriptions
 
